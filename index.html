@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta c harset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoPlayer</title>
+    <link rel="stylesheet" href="master.css">
+</head>
+<body>
+    <h2 class="heading">Video playlist</h2>
+    
+    <div class="container">
+    <div class="main_video">
+        <div class="video">
+            <!-- <video src="https://drive.google.com/file/d/1TDoqd_NNvqhBt7NxTwKV7kFDvbofszMy/view?usp=sharing" type="video/mp4" controls muted autoplay> </video> -->
+            <iframe src="https://drive.google.com/file/d/1w79mSWqpwjEylQvMXuGzElQpvl8A6n-U/preview"  allow="autoplay"></iframe>
+            <h3 class="title"> video No.1 </h3>
+        </div>
+    </div>
+
+    <div class="video_list">
+        <h2>Video List </h2>
+        <div class="videono active">
+            <iframe src="https://drive.google.com/file/d/1w79mSWqpwjEylQvMXuGzElQpvl8A6n-U/preview" ></iframe>
+            <h3 class="title">video No.1  </h3>
+        </div>
+
+        <div class="videono">
+            <iframe src="https://drive.google.com/file/d/1RUkuCjgq4I8EK2dIijwCJEEGSho22Bfy/preview" ></iframe>
+            <h3 class="title">video No.2  </h3>
+        </div>
+
+        <div class="videono">
+            <!-- <video src="https://drive.google.com/file/d/1TDoqd_NNvqhBt7NxTwKV7kFDvbofszMy/view?usp=sharing" type="video/mp4" muted > </video> -->
+            <iframe src="https://drive.google.com/file/d/1TDoqd_NNvqhBt7NxTwKV7kFDvbofszMy/preview" ></iframe>
+            <h3 class="title"> video No.3  </h3>
+        </div>
+
+        <div class="videono">
+            <iframe src="https://drive.google.com/file/d/1Dh8E4mzBHMPGLOnZJu2WLFYxlHKwWqt8/preview" ></iframe>
+            <h3 class="title"> video No.4  </h3>
+        </div>
+
+        <div class="videono">
+            <iframe src="https://drive.google.com/file/d/1El9ONnEDPt--xykysbtqqhWK627isvd8/preview"  ></iframe>
+            <h3 class="title"> video No.5  </h3>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let listVideo = document.querySelectorAll('.video_list .videono');
+    let mainvideo= document.querySelector('.main_video iframe');
+    let title = document.querySelector('.main_video .title');
+
+    console.log(" video title is is ==");
+    console.log(listVideo);
+    console.log(" video is ==");
+    listVideo.forEach(video =>{
+        video.onclick=()=>{
+            listVideo.forEach(videono => videono.classList.remove('active'));
+            video.classList.add('active');
+            if(video.classList.contains('active')){
+                let src= video.children[0].getAttribute('src');
+                mainvideo.src = src;
+                let text = video.children[1].innerHTML;
+                title.innerHTML = text;
+            };
+        };
+    });
+
+</script>
+    
+</body>
+</html>
